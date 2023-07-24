@@ -12,7 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     SHELL
 
     config.vm.define "ubuntu20.04" do |ubuntu|
-        ubuntu.vm.hostname = "ubuntu20.04"
+        ubuntu.vm.hostname = "git-server"
     end
 
     config.vm.provision:shell, path: "bootstrap.sh"

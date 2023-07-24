@@ -72,7 +72,7 @@ setup_root_login() {
 setup_welcome_msg() {
     sudo apt -y install cowsay
     version=$(cat /etc/os-release |grep VERSION= | cut -d'=' -f2 | sed 's/"//g')
-    sudo echo -e "\necho \"Welcome to Vagrant Ubuntu Server ${version}\" | cowsay\n" >> /home/vagrant/.bashrc
+    sudo echo -e "\necho \"Welcome to Vagrant-Git-Server ${version}\" | cowsay\n" >> /home/vagrant/.bashrc
     sudo ln -s /usr/games/cowsay /usr/local/bin/cowsay
 }
 
