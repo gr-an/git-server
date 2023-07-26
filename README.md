@@ -17,30 +17,6 @@ Before proceeding with the setup, make sure you have the following prerequisites
 2. Ensure you have Vagrant and VirtualBox installed on your machine.
 3. Open a terminal or command prompt and navigate to the project's root directory.
 
-## Vagrantfile
-
-The `Vagrantfile` is used to configure the virtual machine. It sets up an Ubuntu 20.04 VM, applies necessary configurations, and provisions it using the shell scripts provided.
-
-```ruby
-VAGRANTFILE_API_VERSION = "2"
-
-Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-    config.vm.box = "generic/ubuntu2004"
-    config.vm.box_version = "3.1.16"
-    config.vm.provision :shell, inline: <<-SHELL
-        echo "root:rootroot" | sudo chpasswd
-        sudo timedatectl set-timezone Asia/Ho_Chi_Minh
-    SHELL
-
-    config.vm.define "git-server" do |gitServer|
-        gitServer.vm.hostname = "git-server"
-    end
-
-    config.vm.provision :shell, path: "bootstrap.sh"
-    config.vm.provision :shell, path: "git-server-setup.sh"
-end
-```
-
 ## Shell Scripts
 
 ### bootstrap.sh
@@ -93,3 +69,27 @@ To access the Git server:
 ## Conclusion
 
 Congratulations! You have successfully set up a Git server using Vagrant and provisioned it with necessary configurations and tools. You can now use this server for version control and collaboration with your projects. Happy coding!
+
+## Vagrantfile
+
+The `Vagrantfile` is used to configure the virtual machine. It sets up an Ubuntu 20.04 VM, applies necessary configurations, and provisions it using the shell scripts provided.
+
+```ruby
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+    config.vm.box = "generic/ubuntu2004"
+    config.vm.box_version = "3.1.16"
+    config.vm.provision :shell, inline: <<-SHELL
+        echo "root:rootroot" | sudo chpasswd
+        sudo timedatectl set-timezone Asia/Ho_Chi_Minh
+    SHELL
+
+    config.vm.define "git-server" do |gitServer|
+        gitServer.vm.hostname = "git-server"
+    end
+
+    config.vm.provision :shell, path: "bootstrap.sh"
+    config.vm.provision :shell, path: "git-server-setup.sh"
+end
+```
