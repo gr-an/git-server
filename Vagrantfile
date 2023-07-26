@@ -11,9 +11,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         sudo timedatectl set-timezone Asia/Ho_Chi_Minh
     SHELL
 
-    config.vm.define "ubuntu20.04" do |ubuntu|
-        ubuntu.vm.hostname = "git-server"
+    config.vm.define "git-server" do |gitServer|
+        gitServer.vm.hostname = "git-server"
     end
 
     config.vm.provision:shell, path: "bootstrap.sh"
+    config.vm.provision:shell, path: "git-server-setup.sh"
 end

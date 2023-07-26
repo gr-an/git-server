@@ -57,13 +57,13 @@ install_openssh() {
 }
 
 install_tools() {
+    echo ==== Installing Requirements ==============================================
     sudo apt install -y python-pip
     sudo apt install -y default-jre
-	pip install kafka --user
-	pip install kafka-python --user
 }
 
 setup_root_login() {
+    echo ==== Setting up root login ======================================    
     sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
     sudo systemctl restart ssh
     sudo echo "root:rootroot" | chpasswd
