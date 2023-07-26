@@ -74,6 +74,8 @@ To set up and provision the Git server:
 
 4. To access the Git server from your host machine, you can use the SSH key generated during the provisioning process.
 
+5. Repositorie is located at ```/git/usr/local/git```
+
 ## Accessing the Git Server
 
 To access the Git server:
